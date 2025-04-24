@@ -1,0 +1,293 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luzon Language Map</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for the search bar */
+        #search-container {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 300px; /* Increased width of the search bar */
+        }
+        #search-input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px; /* Increased font size */
+            font-family: 'Inter', sans-serif;
+        }
+        #search-results {
+            position: absolute;
+            top: 40px; /* Adjusted top position */
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-height: 200px; /* Added max height for scrollable results */
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Initially hidden */
+            width: 100%; /* Match the width of the input */
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added shadow for better visibility */
+        }
+        #search-results ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #search-results li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee; /* Added a subtle border */
+        }
+        #search-results li:hover {
+            background-color: #f0f0f0; /* Slight background change on hover */
+        }#search-results li:last-child {
+            border-bottom: none; /* Remove border from the last item */
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        .info-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .info-container h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .info-container p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+         .language-info {
+            margin-bottom: 15px;
+        }
+        .language-info h3{
+            font-size: 18px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .language-info p{
+             font-size: 16px;
+             color: #3498db;
+        }
+
+        .phrases-container {
+            margin-top: 20px;
+        }
+
+        .phrases-container h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .phrases-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .phrases-list li {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search for a province or municipality...">
+        <div id="search-results">
+            <ul></ul>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <div id="info-panel" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg p-6 overflow-y-auto transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="info-container">
+            <h2 id="entity-name"></h2>
+            <p id="entity-info"></p>
+             <div id="languages-container" class="mt-4">
+                <h2>Languages Spoken</h2>
+            </div>
+            <div class="phrases-container">
+                <h3>Common Phrases</h3>
+                <ul id="phrases-list" class="phrases-list">
+                    </ul>
+            </div>
+        </div>
+        <button id="close-info-panel" class="absolute top-4 left-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Close
+        </button>
+    </div>
+
+    <script>
+        const mapElement = document.getElementById('map');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const infoPanel = document.getElementById('info-panel');
+        const closeInfoPanelButton = document.getElementById('close-info-panel');
+        const entityNameElement = document.getElementById('entity-name');
+        const entityInfoElement = document.getElementById('entity-info');
+        const languagesContainer = document.getElementById('languages-container');
+        const phrasesList = document.getElementById('phrases-list');
+
+
+        let map = L.map(mapElement).setView([16.5000, 121.0000], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let activeLayer = null;
+
+        function showInfoPanel(data) {
+            entityNameElement.textContent = data.province?.name || data.municipality?.name || 'Information';
+            entityInfoElement.textContent = data.province?.information || data.municipality?.information || 'No information available.';
+
+            languagesContainer.innerHTML = '<h2>Languages Spoken</h2>'; // Clear previous content
+            if (data.languages && data.languages.length > 0) {
+                data.languages.forEach(languageData => {
+                    const languageName = languageData.language?.name || 'Unknown Language';
+                    const dialectName = languageData.dialect?.name || 'No Dialect';
+                     const percentage = languageData.percentage ? `${languageData.percentage}%` : 'N/A';
+                    languagesContainer.innerHTML += `
+                        <div class="language-info">
+                            <h3>${languageName}</h3>
+                            <p>Dialect: ${dialectName}</p>
+                            <p>Percentage: ${percentage}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                languagesContainer.innerHTML += '<p>No languages information available.</p>';
+            }
+            phrasesList.innerHTML = '';
+            if(data.phrases && data.phrases.length>0){
+                 data.phrases.forEach(phraseData => {
+                    const languageName = phraseData.language_name;
+                    const phrases = phraseData.phrases;
+                    phrases.forEach(phrase => {
+                         phrasesList.innerHTML += `<li>${phrase.content} (${languageName})</li>`;
+                    })
+
+                });
+            }
+            else{
+                 phrasesList.innerHTML = 'No phrases available';
+            }
+
+            infoPanel.classList.add('translate-x-0');
+        }
+
+        function closeInfoPanel() {
+            infoPanel.classList.remove('translate-x-0');
+            if (activeLayer) {
+                map.removeLayer(activeLayer);
+                activeLayer = null;
+            }
+        }
+
+        closeInfoPanelButton.addEventListener('click', closeInfoPanel);
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            if (query.length > 2) {
+                fetch(`/search?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const resultsList = searchResults.querySelector('ul');
+                        resultsList.innerHTML = '';
+                        if (data.length > 0) {
+                            data.forEach(item => {
+                                const li = document.createElement('li');
+                                li.textContent = `${item.name} (${item.type})`;
+                                li.dataset.type = item.type;
+                                li.dataset.id = item.id;
+                                resultsList.appendChild(li);
+                            });
+                            searchResults.style.display = 'block';
+                        } else {
+                            searchResults.style.display = 'none';
+                        }
+                    });
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+
+        searchResults.addEventListener('click', function(event) {
+            const target = event.target.closest('li');
+            if (target) {
+                const type = target.dataset.type;
+                const id = target.dataset.id;
+                searchResults.style.display = 'none';
+                searchInput.value = ''; // Clear input after selection
+
+                if (type === 'province') {
+                    fetch(`/province/${id}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            showInfoPanel(data);
+                           // No need to add layer here, the map is already centered.
+                        });
+                } else if (type === 'municipality') {
+                    fetch(`/municipality/${id}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            showInfoPanel(data);
+                            // No need to add layer here.
+                        });
+                }
+            }
+        });
+
+        // Event listener for map clicks to show province details.
+        map.on('click', function(e) {
+            // This is a simplified version.  In a real application, you would use
+            // the e.latlng to find the province that was clicked.  You might use
+            // a GeoJSON layer with clickable features, or a more complex
+            // algorithm to determine which province contains the clicked point.
+            // For this example, we'll just fetch the details for a known province.
+            //  You'll need to adapt this part to use your actual province data.
+
+            //  The below is just an example.
+            fetch(`/province/01`)  // Fetch province 01.
+                .then(response => response.json())
+                .then(data => {
+                    showInfoPanel(data);
+                });
+        });
+    </script>
+</body>
+</html>

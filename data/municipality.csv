@@ -1,0 +1,19 @@
+municipality_id,municipality_name,information,province_id
+0101,Adams,"Adams is a municipality in Ilocos Norte.",01
+0102,Bacarra,"Bacarra is a municipality in Ilocos Norte.",01
+0103,Badoc,"Badoc is a municipality in Ilocos Norte.",01
+0201,Abulug,"Abulug is a municipality in Cagayan.",02
+0202,Alcala,"Alcala is a municipality in Cagayan.",02
+0203,Allacapan,"Allacapan is a municipality in Cagayan.",02
+0301,Angat,"Angat is a municipality in Bulacan.",03
+0302,Balagtas,"Balagtas is a municipality in Bulacan.",03
+0303,Baliuag,"Baliuag is a municipality in Bulacan.",03
+0401,Alaminos,"Alaminos is a municipality in Laguna.",04
+0402,Bay,"Bay is a municipality in Laguna.",04
+0403,Biñan,"Biñan is a city in Laguna.",04
+0501,Bacacay,"Bacacay is a municipality in Albay.",05
+0502,Camalig,"Camalig is a municipality in Albay.",05
+0503,Daraga,"Daraga is a municipality in Albay.",05
+CAR01,Abatan,"example munip CAR",CAR
+CAR02,Ambasing,"example munip CAR",CAR
+CAR03,Ambuclao,"example munip CAR",CAR
