@@ -192,6 +192,12 @@
         "image": "sorsogon.jpg"
     },
     {
+        "province": "Marinduque",
+        "description": "Marinduque is famous for the Moriones Festival and heart-shaped island geography.",
+        "languages": ["Tagalog"],
+        "image": "marinduque.jpg"
+    },
+    {
         "province": "Tarlac",
         "description": "Tarlac is a multicultural province and is the birthplace of Ninoy Aquino.",
         "languages": ["Ilocano", "Kapampangan", "Pangasinan", "Tagalog"],
@@ -221,4 +227,28 @@
         "languages": ["Masbateño", "Bicolano", "Tagalog"],
         "image": "masbate.jpg"
     },
+    {
+        "province": "Occidental Mindoro",
+        "description": "Occidental Mindoro has beaches, mountains, and is home to the Mangyan indigenous group.",
+        "languages": ["Tagalog", "Mangyan"],
+        "image": "occidental_mindoro.jpg"
+    },
+    {
+        "province": "Oriental Mindoro",
+        "description": "Oriental Mindoro is known for Puerto Galera’s beaches and diving spots.",
+        "languages": ["Tagalog", "Mangyan"],
+        "image": "oriental_mindoro.jpg"
+    },
+    {
+        "province": "Palawan",
+        "description": "Palawan is a top tourist destination, home to El Nido, Coron, and the Underground River.",
+        "languages": ["Cuyonon", "Tagalog", "Palawano"],
+        "image": "palawan.jpg"
+    },
+    {
+        "province": "Romblon",
+        "description": "Romblon is famous for its marble industry and pristine beaches.",
+        "languages": ["Romblomanon", "Tagalog"],
+        "image": "romblon.jpg"
+    }
 ]
