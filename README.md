@@ -49,7 +49,7 @@
 
 ##  Key Functionality
 
-* **Map Display:** The `js/scripts.js` file fetches the SVG map and injects it into the `#map-container` element.
+* **Map Display:** The `js/script.js` file fetches the SVG map and injects it into the `#map-container` element.
 * **Province Highlighting:** CSS styles are used to highlight provinces on hover and click.
 * **Province Details:**
     * Clicking a province retrieves data from `provinces.json` and displays the province's name, description, image, and languages spoken.
@@ -60,7 +60,7 @@
 
 * **Map Styles:** Modify the CSS in `css/styles.css` to change the appearance of the map, details panel, tooltips, etc.
 * **Province Data:** Update the information in `data/provinces.json` to reflect accurate province details.  Add more provinces as needed.  Ensure corresponding images are in the `images/` folder.
-* **Chart Appearance:** Customize the Chart.js pie chart in the `js/scripts.js` file by adjusting the chart options.  Refer to the Chart.js documentation: [https://www.chartjs.org/docs/latest/](https://www.chartjs.org/docs/latest/)
+* **Chart Appearance:** Customize the Chart.js pie chart in the `js/script.js` file by adjusting the chart options.  Refer to the Chart.js documentation: [https://www.chartjs.org/docs/latest/](https://www.chartjs.org/docs/latest/)
 * **SVG Map:** You can replace the `philippines.svg` file with a different SVG map, but you will likely need to adjust the JavaScript and CSS to work with the new map's structure.
 
 ##  Potential Improvements

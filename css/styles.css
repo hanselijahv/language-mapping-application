@@ -1,14 +1,16 @@
+/* ===== Base Styles ===== */
 body {
-    font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
     height: 100vh;
+    font-family: sans-serif;
+    color: #333;
+    background-color: #f0f0f0;
     display: flex;
     flex-direction: column;
 }
 
+/* ===== Layout Containers ===== */
 .container {
     flex: 1;
     display: flex;
@@ -23,20 +25,6 @@ body {
     box-sizing: border-box;
 }
 
-h1 {
-    text-align: center;
-    margin: 0 0 10px 0;
-    color: #555;
-}
-
-#search-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
 #map-details-container {
     display: flex;
     flex: 1;
@@ -48,15 +36,56 @@ h1 {
 #map-container {
     flex: 2;
     overflow: hidden;
-    border: 1px solid #ffffff;
+    border: 1px solid #fff;
     height: 100%;
     position: relative;
-    background-color: #C6ECFF;
+    background-color: #d1e9ff;
     transform-origin: top left;
 }
 
+#region-container {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
+}
 
-#map-container svg {
+#region-details {
+    flex: 1;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* ===== Typography ===== */
+h1 {
+    margin: 0 0 10px 0;
+    text-align: center;
+    color: #555;
+}
+
+/* ===== Map Elements ===== */
+.map-region {
+    fill: #f0f0f0;
+    stroke: black;
+    stroke-width: 1;
+    cursor: pointer;
+}
+
+.map-region:hover {
+    fill: #b2cde5;
+}
+
+.map-region-selected {
+    fill: #9eb6cc;
+}
+
+#map-container svg,
+#region-container svg {
     user-select: none;
     pointer-events: all;
     width: auto;
@@ -66,14 +95,6 @@ h1 {
 
 #region-container svg {
     width: 100%;
-    height: auto;
-    user-select: none;
-}
-
-#region-container {
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 10px;
 }
 
 #luzon-map {
@@ -81,33 +102,22 @@ h1 {
     height: 100%;
 }
 
-#region-details {
-    flex: 1;
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 20px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    height: 100%;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
-
-#region-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* change to contain if you prefer showing the whole image */
-    display: block;
-}
-
+/* ===== Region Details Components ===== */
 #region-image-container {
     width: 100%;
-    height: 250px; /* fixed height */
+    height: 250px;
     overflow: hidden;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#region-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
 }
 
 #language-chart {
@@ -117,66 +127,16 @@ h1 {
 }
 
 #language-list {
-    list-style-type: disc;
-    padding-left: 1.5rem;
+    list-style-type: none;
+    padding: 0;
     margin: 0.5rem 0;
 }
 
-.tab-buttons {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.tab-button {
-    padding: 10px 20px;
-    background-color: #ddd;
-    color: #333;
-    border: none;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-}
-
-.tab-button.active {
-    background-color: #fff;
-    border-bottom: 2px solid #007bff;
-}
-
-ul#language-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul#language-list li {
+#language-list li {
     margin-bottom: 5px;
 }
 
-/* Styling for the map regions */
-.map-region {
-    fill: #f0f0f0;
-    stroke: black;
-    stroke-width: 1;
-    cursor: pointer;
-}
-
-.map-region:hover {
-    fill: lightblue;
-}
-
-.map-region-selected {
-    fill: rgb(55, 0, 255);
-}
-
-.region-tooltip {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 12px;
-    visibility: hidden;
-    z-index: 10;
-}
-
-/* Search styles */
+/* ===== Search Components ===== */
 #search-container {
     position: relative;
     width: 300px;
@@ -186,7 +146,10 @@ ul#language-list li {
 #search-input {
     width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 #search-results {
@@ -206,7 +169,8 @@ ul#language-list li {
     cursor: pointer;
 }
 
-.search-result-item:hover {
+.search-result-item:hover,
+.search-result-item.highlighted {
     background-color: #f0f0f0;
 }
 
@@ -214,11 +178,22 @@ ul#language-list li {
     background-color: #e0e0e0;
 }
 
-#region-details.region-card {
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* ===== Tooltips ===== */
+.region-tooltip {
+    position: absolute;
+    padding: 5px;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    visibility: hidden;
+    z-index: 10;
 }
 
+/* ===== Utility Classes ===== */
 .hidden {
     display: none;
+}
+
+.region-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

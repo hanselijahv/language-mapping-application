@@ -334,7 +334,7 @@
       "Bisaya": 10,
       "Ilocano": 5
     },
-    "image": "occidental-mindoro.jpg"
+    "image": "occidental_mindoro.jpg"
   },
   {
     "province": "Oriental Mindoro",
@@ -351,7 +351,7 @@
       "Bisaya": 10,
       "Hiligaynon": 5
     },
-    "image": "oriental-mindoro.jpg"
+    "image": "oriental_mindoro.jpg"
   },
   {
     "province": "Mountain Province",

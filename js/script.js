@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.svg = elements.mapContainer.querySelector('svg');
                 state.svg.setAttribute('id', 'interactive-map');
 
+                // Wait for next animation frame to ensure layout is updated
+                requestAnimationFrame(() => {
+                    centerMap();
+                });
+
                 setupMapInteractions();
                 initializeSearch();
             })
@@ -52,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 elements.mapContainer.textContent = 'Error loading the map.';
             });
     }
+
 
     // Setup all event listeners
     function setupEventListeners() {
@@ -308,11 +314,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerY = bbox.y + bbox.height/2;
 
         const containerRect = elements.mapContainer.getBoundingClientRect();
-        const targetX = containerRect.width/2 - centerX * state.currentScale;
-        const targetY = containerRect.height/2 - centerY * state.currentScale;
 
-        const bounded = getBoundedTranslation(targetX, targetY);
-        applyTransform(bounded.x, bounded.y, state.currentScale);
+        const viewportRatio = Math.min(containerRect.width, containerRect.height);
+        const regionSize = Math.max(bbox.width, bbox.height);
+        const targetScale = Math.min(3, Math.max(0.65, viewportRatio/(regionSize * 1.5)));
+
+        const targetX = containerRect.width/2 - centerX * targetScale;
+        const targetY = containerRect.height/2 - centerY * targetScale;
+        const bounded = getBoundedTranslation(targetX, targetY, targetScale);
+
+        // Smooth zoom animation (preserved)
+        const zoomSteps = 10;
+        const scaleStep = (targetScale - state.currentScale) / zoomSteps;
+        const xStep = (bounded.x - state.currentTranslate.x) / zoomSteps;
+        const yStep = (bounded.y - state.currentTranslate.y) / zoomSteps;
+
+        let stepsCompleted = 0;
+        const zoomInterval = setInterval(() => {
+            if (stepsCompleted >= zoomSteps) {
+                clearInterval(zoomInterval);
+                return;
+            }
+
+            const newScale = state.currentScale + scaleStep;
+            const newX = state.currentTranslate.x + xStep;
+            const newY = state.currentTranslate.y + yStep;
+
+            applyTransform(newX, newY, newScale);
+            stepsCompleted++;
+        }, 20);
     }
 
     // Load and display province data
@@ -320,9 +350,17 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const provinceData = await fetchProvinceData(provinceName);
 
+            elements.regionImage.style.display = 'none';
+            elements.regionImage.src = `assets/images/jpg/${provinceData.image}`;
+            elements.regionImage.onload = function () {
+                this.style.display = 'block';
+            };
+            elements.regionImage.onerror = function () {
+                this.style.display = 'none';
+            };
+
             elements.regionDetails.classList.remove('hidden');
             elements.regionName.textContent = provinceData.province;
-            elements.regionImage.src = `assets/images/jpg/${provinceData.image}`;
             elements.regionDescription.textContent = provinceData.description;
 
             renderLanguageList(provinceData.language_percentages || {});
@@ -331,7 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading province data:', error);
         }
     }
-
     // Render language list
     function renderLanguageList(languages) {
         elements.languageList.innerHTML = '';
@@ -413,7 +450,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle zoom functionality
+    // Updated handleZoom function (minimum zoom now 0.65)
     function handleZoom(e) {
+        e.preventDefault();
+
         const containerRect = elements.mapContainer.getBoundingClientRect();
         const mouseX = e.clientX - containerRect.left;
         const mouseY = e.clientY - containerRect.top;
@@ -423,7 +463,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const wheelDelta = e.deltaY < 0 ? 1 : -1;
         const zoomFactor = 1.1;
         let newScale = state.currentScale * Math.pow(zoomFactor, wheelDelta);
-        newScale = Math.min(Math.max(newScale, 1), 3);
+
+        // Set zoom limits (0.65 to 3)
+        newScale = Math.min(Math.max(newScale, 0.65), 3);
 
         const newTranslateX = mouseX - svgX * newScale;
         const newTranslateY = mouseY - svgY * newScale;
@@ -431,6 +473,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         applyTransform(bounded.x, bounded.y, newScale);
     }
+
+
 
     // Apply transform to SVG
     function applyTransform(x, y, scale) {
@@ -456,12 +500,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const svgBBox = state.svg.getBBox();
         const scaledWidth = svgBBox.width * scale;
         const scaledHeight = svgBBox.height * scale;
+
+        // Calculate maximum allowed translation
+        const maxX = 0;
         const minX = containerRect.width - scaledWidth;
+        const maxY = 0;
         const minY = containerRect.height - scaledHeight;
 
+        // Only enforce horizontal boundaries if map is wider than container
+        const allowHorizontalDrag = scaledWidth > containerRect.width;
+
         return {
-            x: Math.min(0, Math.max(minX, translateX)),
-            y: Math.min(0, Math.max(minY, translateY))
+            x: allowHorizontalDrag ? Math.min(maxX, Math.max(minX, translateX)) : translateX,
+            y: Math.min(maxY, Math.max(minY, translateY))
         };
     }
 
@@ -495,6 +546,26 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.toggle('active', button.dataset.tab === tabId);
         });
     }
+
+    function centerMap() {
+        const containerRect = elements.mapContainer.getBoundingClientRect();
+        const svgBBox = state.svg.getBBox();
+
+        // Set initial zoom scale
+        const initialScale = 0.65;
+        const scaledWidth = svgBBox.width * initialScale;
+        const scaledHeight = svgBBox.height * initialScale;
+
+        // Center calculation
+        const centerX = (containerRect.width - scaledWidth) / 2;
+        const centerY = (containerRect.height - scaledHeight) / 2;
+
+        // Apply transform
+        state.currentTranslate = { x: centerX, y: centerY };
+        state.currentScale = initialScale;
+        state.svg.setAttribute('transform', `translate(${centerX}, ${centerY}) scale(${initialScale})`);
+    }
+
 
     // Initialize the application
     init();
