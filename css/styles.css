@@ -4,44 +4,74 @@ body {
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
-    width: 95%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     max-width: 1200px;
-    margin: 20px auto;
+    max-height: 90vh;
+    margin: auto;
+    padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
     text-align: left;
-    margin-bottom: 20px;
+    margin: 0 0 10px 0;
     color: #555;
 }
 
 #search-input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
 
 #map-details-container {
     display: flex;
+    flex: 1;
     width: 100%;
-    height: 800px;
     background-color: #C6ECFF;
+    overflow: hidden;
 }
 
 #map-container {
     flex: 2;
+    overflow: hidden;
     border: 1px solid #ffffff;
     height: 100%;
     position: relative;
+    transform-origin: top left;
+}
+
+#map-container svg {
+    user-select: none;
+    pointer-events: all;
+    width: auto;
+    height: auto;
+    transform-origin: top left;
+}
+
+#region-container svg {
+    width: 100%;
+    height: auto;
+    user-select: none;
+}
+
+#region-container {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10px;
 }
 
 #luzon-map {
@@ -55,18 +85,10 @@ h1 {
     border: 1px solid #ddd;
     padding: 20px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    top: 20px;
-    right: 20px;
     width: 300px;
-    /* Adjust height to accommodate chart */
-    height: 500px;
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-}
-
-#region-details.hidden,
-.tab-content.hidden {
-    display: none;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
 }
 
 #region-image {
@@ -83,10 +105,15 @@ h1 {
 }
 
 #language-chart {
-    /* Set max dimensions for the chart */
     max-width: 100%;
     max-height: 250px;
     margin: 20px 0;
+}
+
+#language-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
 }
 
 .tab-buttons {
@@ -132,6 +159,7 @@ ul#language-list li {
 .map-region-selected {
     fill: rgb(55, 0, 255);
 }
+
 .region-tooltip {
     position: absolute;
     background-color: white;
@@ -139,5 +167,43 @@ ul#language-list li {
     padding: 5px;
     font-size: 12px;
     visibility: hidden;
-    z-index: 10;  /* Ensure it's on top of other elements */
+    z-index: 10;
+}
+
+/* Search styles */
+#search-container {
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#search-results {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 1000;
+    display: none;
+}
+
+.search-result-item {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
+.search-result-item.highlighted {
+    background-color: #e0e0e0;
 }

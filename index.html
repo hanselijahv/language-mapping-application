@@ -1,39 +1,43 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Luzon Language Map</title>
-       <link rel="stylesheet" href="css/styles.css">
-       <script src="https://d3js.org/d3.v7.min.js"></script>
-       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   </head>
-   <body>
-       <div class="container">
-           <h1>Language Map of Luzon</h1>
-           <input type="text" id="search-input" placeholder="Search regions...">
-           <div id="map-details-container">  <div id="map-container">
-                   </div>
-               <div id="region-details" class="hidden">
-                   <div class="tab-buttons">
-                       <button class="tab-button active" data-tab="region-info">Region Info</button>
-                       <button class="tab-button" data-tab="language">Language</button>
-                   </div>
-                   <div id="region-info" class="tab-content">
-                       <h2 id="region-name"></h2>
-                       <div id="region-image-container">
-                           <img id="region-image" src="" alt="">
-                       </div>
-                       <p id="region-description"></p>
-                   </div>
-                   <div id="language" class="tab-content hidden">
-                       <h3>Languages Spoken</h3>
-                       <canvas id="language-chart"></canvas>
-                       <ul id="language-list"></ul>
-                   </div>
-               </div>
-           </div>
-       </div>
-       <script src="js/scripts.js"></script>
-   </body>
-   </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luzon Language Map</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Language Map of Luzon</h1>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search for a region...">
+        <div id="search-results"></div>
+    </div>
+    <div id="map-details-container">
+        <div id="map-container">
+        </div>
+        <div id="region-details" class="hidden">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="region-info">Region Info</button>
+                <button class="tab-button" data-tab="language">Language</button>
+            </div>
+            <div id="region-info" class="tab-content">
+                <h2 id="region-name"></h2>
+                <div id="region-image-container">
+                    <img id="region-image" src="" alt="">
+                </div>
+                <p id="region-description"></p>
+            </div>
+            <div id="language" class="tab-content hidden">
+                <h3>Languages Spoken</h3>
+                <canvas id="language-chart"></canvas>
+                <ul id="language-list"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/scripts.js"></script>
+</body>
+</html>
