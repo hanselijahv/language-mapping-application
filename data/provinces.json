@@ -1,0 +1,230 @@
+[
+    {
+        "province": "Abra",
+        "description": "Abra is a landlocked province in the Cordillera region, known for its scenic mountains and traditional weaving.",
+        "languages": ["Ilocano", "Tingguian", "Tagalog"],
+        "image": "abra.jpg"
+    },
+    {
+        "province": "Albay",
+        "description": "Albay is home to the majestic Mayon Volcano, known for its perfect cone shape.",
+        "languages": ["Bicolano", "Tagalog"],
+        "image": "albay.jpg"
+    },
+    {
+        "province": "Apayao",
+        "description": "Apayao features lush forests and is part of the Cordillera Administrative Region.",
+        "languages": ["Isnag", "Ilocano", "Tagalog"],
+        "image": "apayao.jpg"
+    },
+    {
+        "province": "Aurora",
+        "description": "Aurora is a coastal province known for surfing spots like Baler and its natural parks.",
+        "languages": ["Tagalog", "Ilocano"],
+        "image": "aurora.jpg"
+    },
+    {
+        "province": "Bataan",
+        "description": "Bataan played a key role in World War II and is now an industrialized province with historical landmarks.",
+        "languages": ["Tagalog", "Kapampangan"],
+        "image": "bataan.jpg"
+    },
+    {
+        "province": "Batangas",
+        "description": "Batangas is famous for Taal Volcano, dive spots in Anilao, and local delicacies.",
+        "languages": ["Tagalog", "Batangueño"],
+        "image": "batangas.jpg"
+    },
+    {
+        "province": "Benguet",
+        "description": "Benguet, also called the Salad Bowl of the Philippines, is known for vegetable farming and mountain resorts.",
+        "languages": ["Kankanaey", "Ibaloi", "Ilocano", "Tagalog"],
+        "image": "benguet.jpg"
+    },
+    {
+        "province": "Bulacan",
+        "description": "Bulacan is rich in history and culture, and is close to Metro Manila.",
+        "languages": ["Tagalog"],
+        "image": "bulacan.jpg"
+    },
+    {
+        "province": "Cagayan",
+        "description": "Cagayan boasts natural wonders and the Callao Caves, with strong Ilocano and Ibanag heritage.",
+        "languages": ["Ilocano", "Ibanag", "Tagalog"],
+        "image": "cagayan.jpg"
+    },
+    {
+        "province": "Camarines Norte",
+        "description": "Camarines Norte is known for Calaguas Islands and gold-panning in Paracale.",
+        "languages": ["Bicolano", "Tagalog"],
+        "image": "camarines_norte.jpg"
+    },
+    {
+        "province": "Camarines Sur",
+        "description": "Camarines Sur is a popular destination for wakeboarding and natural parks.",
+        "languages": ["Bicolano", "Tagalog"],
+        "image": "camarines_sur.jpg"
+    },
+    {
+        "province": "Cavite",
+        "description": "Cavite played a key role in Philippine independence and has a mix of urban and rural landscapes.",
+        "languages": ["Tagalog", "Chavacano (in some parts)"],
+        "image": "cavite.jpg"
+    },
+    {
+        "province": "Ifugao",
+        "description": "Ifugao is famous for the UNESCO-listed Banaue Rice Terraces.",
+        "languages": ["Ifugao", "Ilocano", "Tagalog"],
+        "image": "ifugao.jpg"
+    },
+    {
+        "province": "Ilocos Norte",
+        "description": "Ilocos Norte is the northernmost province in the Ilocos Region, known for wind farms and heritage sites.",
+        "languages": ["Ilocano", "Tagalog"],
+        "image": "ilocos_norte.jpg"
+    },
+    {
+        "province": "Ilocos Sur",
+        "description": "Ilocos Sur is home to the historic city of Vigan, a UNESCO World Heritage Site.",
+        "languages": ["Ilocano", "Tagalog"],
+        "image": "ilocos_sur.jpg"
+    },
+    {
+        "province": "Isabela",
+        "description": "Isabela is one of the largest provinces, with rich agriculture and forests.",
+        "languages": ["Ilocano", "Ibanag", "Gaddang", "Tagalog"],
+        "image": "isabela.jpg"
+    },
+    {
+        "province": "Kalinga",
+        "description": "Kalinga is known for its traditional tattoos and rich indigenous culture.",
+        "languages": ["Kalinga", "Ilocano", "Tagalog"],
+        "image": "kalinga.jpg"
+    },
+    {
+        "province": "La Union",
+        "description": "La Union is a popular surfing destination in Northern Luzon.",
+        "languages": ["Ilocano", "Tagalog"],
+        "image": "la_union.jpg"
+    },
+    {
+        "province": "Laguna",
+        "description": "Laguna is known for hot springs, historical sites, and being the hometown of Jose Rizal.",
+        "languages": ["Tagalog"],
+        "image": "laguna.jpg"
+    },
+    {
+        "province": "Mountain Province",
+        "description": "Mountain Province is where the hanging coffins of Sagada can be found.",
+        "languages": ["Kankanaey", "Bontoc", "Ilocano", "Tagalog"],
+        "image": "mountain_province.jpg"
+    },
+    {
+        "province": "Nueva Ecija",
+        "description": "Nueva Ecija is the Rice Granary of the Philippines.",
+        "languages": ["Tagalog", "Ilocano", "Pampango"],
+        "image": "nueva_ecija.jpg"
+    },
+    {
+        "province": "Nueva Vizcaya",
+        "description": "Nueva Vizcaya is a multicultural province with scenic mountain ranges and rich agriculture.",
+        "languages": ["Ilocano", "Ifugao", "Gaddang", "Tagalog"],
+        "image": "nueva_vizcaya.jpg"
+    },
+    {
+        "province": "Pampanga",
+        "description": "Pampanga is known as the Culinary Capital of the Philippines.",
+        "languages": ["Kapampangan", "Tagalog"],
+        "image": "pampanga.jpg"
+    },
+    {
+        "province": "Pangasinan",
+        "description": "Pangasinan is known for its salt farms and the Hundred Islands National Park.",
+        "languages": ["Pangasinan", "Ilocano", "Tagalog"],
+        "image": "pangasinan.jpg"
+    },
+    {
+        "province": "Quezon",
+        "description": "Quezon province features Mount Banahaw and the colorful Pahiyas Festival.",
+        "languages": ["Tagalog"],
+        "image": "quezon.jpg"
+    },
+    {
+        "province": "Quirino",
+        "description": "Quirino is a landlocked province with caves, rivers, and eco-adventures.",
+        "languages": ["Ilocano", "Tagalog"],
+        "image": "quirino.jpg"
+    },
+    {
+        "province": "Rizal",
+        "description": "Rizal is a mountainous province close to Metro Manila, rich in art and nature spots.",
+        "languages": ["Tagalog"],
+        "image": "rizal.jpg"
+    },
+    {
+        "province": "Sorsogon",
+        "description": "Sorsogon is the southernmost province in Bicol, known for whale shark watching in Donsol.",
+        "languages": ["Bicolano", "Tagalog"],
+        "image": "sorsogon.jpg"
+    },
+    {
+        "province": "Tarlac",
+        "description": "Tarlac is a multicultural province and is the birthplace of Ninoy Aquino.",
+        "languages": ["Ilocano", "Kapampangan", "Pangasinan", "Tagalog"],
+        "image": "tarlac.jpg"
+    },
+    {
+        "province": "Zambales",
+        "description": "Zambales is known for its beaches, coves, and volcanic landscapes from Mt. Pinatubo.",
+        "languages": ["Ilocano", "Tagalog", "Sambal"],
+        "image": "zambales.jpg"
+    },
+    {
+        "province": "Batanes",
+        "description": "Batanes is the northernmost and smallest province, known for its stone houses and serene landscapes.",
+        "languages": ["Ivatan", "Ilocano", "Tagalog"],
+        "image": "batanes.jpg"
+    },
+    {
+        "province": "Catanduanes",
+        "description": "Catanduanes is an island province known for its waves and lush landscapes.",
+        "languages": ["Bicolano", "Tagalog"],
+        "image": "catanduanes.jpg"
+    },
+    {
+        "province": "Marinduque",
+        "description": "Marinduque is famous for the Moriones Festival and heart-shaped island geography.",
+        "languages": ["Tagalog"],
+        "image": "marinduque.jpg"
+    },
+    {
+        "province": "Masbate",
+        "description": "Masbate is known for its rodeos and cowboy culture.",
+        "languages": ["Masbateño", "Bicolano", "Tagalog"],
+        "image": "masbate.jpg"
+    },
+    {
+        "province": "Occidental Mindoro",
+        "description": "Occidental Mindoro has beaches, mountains, and is home to the Mangyan indigenous group.",
+        "languages": ["Tagalog", "Mangyan"],
+        "image": "occidental_mindoro.jpg"
+    },
+    {
+        "province": "Oriental Mindoro",
+        "description": "Oriental Mindoro is known for Puerto Galera’s beaches and diving spots.",
+        "languages": ["Tagalog", "Mangyan"],
+        "image": "oriental_mindoro.jpg"
+    },
+    {
+        "province": "Palawan",
+        "description": "Palawan is a top tourist destination, home to El Nido, Coron, and the Underground River.",
+        "languages": ["Cuyonon", "Tagalog", "Palawano"],
+        "image": "palawan.jpg"
+    },
+    {
+        "province": "Romblon",
+        "description": "Romblon is famous for its marble industry and pristine beaches.",
+        "languages": ["Romblomanon", "Tagalog"],
+        "image": "romblon.jpg"
+    }
+]
