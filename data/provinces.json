@@ -7,8 +7,8 @@
     },
     {
         "province": "Albay",
-        "description": "Albay is home to the majestic Mayon Volcano, known for its perfect cone shape.",
-        "languages": ["Bicolano", "Tagalog"],
+        "description": "Albay is renowned for the majestic Mayon Volcano, a natural wonder celebrated for its perfect cone shape and a UNESCO Global Geopark candidate. The province offers a mix of adventure and culture, with attractions like the Cagsawa Ruins, a historical site from the 1814 eruption, and the annual Magayon Festival celebrating Bicolano heritage. Albay’s capital, Legazpi City, serves as the regional center, blending urban development with scenic views of the volcano. Its coastal location along the Albay Gulf also makes it a gateway to marine adventures like whale shark watching. This information is sourced from the official tourism profile of Albay [Philippine Tourism Authority, 2023].",
+        "languages": ["Bicolano", "Filipino"],
         "image": "albay.jpg"
     },
     {
@@ -55,15 +55,21 @@
     },
     {
         "province": "Camarines Norte",
-        "description": "Camarines Norte is known for Calaguas Islands and gold-panning in Paracale.",
-        "languages": ["Bicolano", "Tagalog"],
+        "description": "Camarines Norte is a coastal province famous for its pristine beaches, particularly the Calaguas Islands, a group of white-sand islands attracting tourists seeking unspoiled nature. The province is also known for its historical sites, such as the centuries-old churches in Daet, its capital, reflecting Spanish colonial influence. It serves as a northern gateway to the Bicol Region, with a landscape that includes rugged mountains and fertile plains ideal for agriculture. Camarines Norte’s proximity to Quezon province has fostered a blend of Tagalog and Bicolano cultures. This description is based on data from PhilAtlas [PhilAtlas, 2025].",
+        "languages": ["Filipino", "Bicolano", "Manide"],
         "image": "camarines_norte.jpg"
     },
     {
         "province": "Camarines Sur",
-        "description": "Camarines Sur is a popular destination for wakeboarding and natural parks.",
-        "languages": ["Bicolano", "Tagalog"],
+        "description": "Camarines Sur, the largest province in the Bicol Region by land area, is a hub of natural beauty and cultural heritage, best known for the Caramoan Islands with their limestone cliffs and turquoise waters. Its capital, Naga City, hosts the Peñafrancia Festival, a major religious event honoring the Virgin of Peñafrancia, drawing millions of devotees annually. The province also features Mount Isarog, a biodiversity hotspot and popular hiking destination, alongside vast rice fields that highlight its agricultural economy. Camarines Sur is a center for education and commerce in the region, with Naga being a key urban area. This information is drawn from the Camarines Sur provincial profile [Camarines Sur Official Website, 2024].",
+        "languages": ["Central Bikol", "Rinconada Bikol", "Filipino"],
         "image": "camarines_sur.jpg"
+    },
+    {
+        "province": "Catanduanes",
+        "description": "Catanduanes, an island province off the eastern coast of Bicol, is often called the 'Land of the Howling Winds' due to its frequent exposure to typhoons from the Pacific Ocean. It’s a haven for surfers, with Puraran Beach’s 'Majestic' waves drawing enthusiasts from around the world, especially during the monsoon season. The province boasts unspoiled natural beauty, including waterfalls like Maribina Falls and lush forests, making it a growing ecotourism destination. Its isolation has preserved its unique Pandan Bikol language and tight-knit community culture. This description is based on tourism insights from the Department of Tourism [Philippine Department of Tourism, 2023].",
+        "languages": ["Central Bikol", "Bicolano", "Tagalog"],
+        "image": "catanduanes.jpg"
     },
     {
         "province": "Cavite",
@@ -187,8 +193,8 @@
     },
     {
         "province": "Sorsogon",
-        "description": "Sorsogon is the southernmost province in Bicol, known for whale shark watching in Donsol.",
-        "languages": ["Bicolano", "Tagalog"],
+        "description": "Sorsogon, located at the southern tip of Luzon, is a gateway to nature adventures, most notably whale shark watching in Donsol, where visitors can swim with these gentle giants. The province is also home to Bulusan Volcano Natural Park, a protected area with a serene lake, hot springs, and hiking trails offering stunning views. Sorsogon’s coastal towns, like Gubat, are known for their surfing spots and traditional fishing communities. Its cultural heritage includes the Kasanggayahan Festival, celebrating the province’s founding with vibrant street dances. This description is based on data from the Sorsogon tourism board [Sorsogon Provincial Tourism, 2023].",
+        "languages": ["Bisakol", "Northern Sorsoganon", "Southern Sorsoganon", "Filipino"],
         "image": "sorsogon.jpg"
     },
     {
@@ -210,15 +216,9 @@
         "image": "batanes.jpg"
     },
     {
-        "province": "Catanduanes",
-        "description": "Catanduanes is an island province known for its waves and lush landscapes.",
-        "languages": ["Bicolano", "Tagalog"],
-        "image": "catanduanes.jpg"
-    },
-    {
         "province": "Masbate",
-        "description": "Masbate is known for its rodeos and cowboy culture.",
-        "languages": ["Masbateño", "Bicolano", "Tagalog"],
+        "description": "Masbate, an island province known as the 'Rodeo Capital of the Philippines,' hosts an annual Rodeo Masbateño festival showcasing its cattle ranching heritage, a unique cultural highlight in the region. The province is surrounded by rich marine waters, with Ticao Island offering opportunities for diving and spotting manta rays in the Ticao Pass. Its economy relies heavily on fishing, agriculture, and livestock, with vast grasslands dominating its landscape. Masbate also features historical sites like the Spanish-era lighthouses on its islands, adding to its charm. This information is sourced from the Masbate provincial tourism profile [Masbate Tourism Office, 2024].",
+        "languages": ["Masbateño", "Bicolano", "Cebuano", "Hiligaynon"],
         "image": "masbate.jpg"
-    },
+    }
 ]
