@@ -1,34 +1,79 @@
-# Luzon Language Map
+##  Technologies Used
 
-This project displays language information for the regions of Luzon, Philippines.
+* HTML5
+* CSS3
+* JavaScript
+* D3.js (for potential map manipulation/scaling - currently used for SVG injection)
+* Chart.js (for displaying language pie charts)
 
-## Files
+##  Setup and Installation
 
-* `index.html`:  Main HTML file.
-* `css/styles.css`:  CSS styling.
-* `js/scripts.js`:  JavaScript logic.
-* `data/regions.json`:  JSON data for regions and languages.
-* `images/`:  Folder for region images.
+1.  **Clone the Repository:** (If you are using version control like Git)
 
-## Setup
+    ```bash
+    git clone [repository_url]
+    cd [repository_directory]
+    ```
 
-1.  Clone or download the project.
-2.  Open `index.html` in a web browser.
+2.  **Prepare Data:**
 
-## Important Notes
+    * **SVG Map (`images/philippines.svg`):**
+        * Ensure that each `<path>` element representing a province has a `title` attribute containing the exact name of the province (e.g., `<path title="Ilocos Sur" ...>`).
+        * Add the class `map-region` to each of these `<path>` elements to allow for JavaScript selection (e.g., `<path title="Ilocos Sur" class="map-region" ...>`).
+    * **Province Data (`data/provinces.json`):**
+        * Create a JSON file named `provinces.json` in the `data/` directory.
+        * Structure the JSON data as an array of objects, where each object represents a province:
 
-* **Map:** The current map implementation uses an image map.  It is highly recommended to replace this with an SVG (Scalable Vector Graphic) for better interactivity and scalability.  Libraries like D3.js or Leaflet.js can help with this.
-* **Data:** The `data/regions.json` file contains placeholder data.  You **must** replace this with accurate information for all Luzon regions.  Ensure image paths in the JSON and HTML are correct.
-* **Images:** Place region images in the `images/` folder and update the paths in `regions.json`.
-* **Chart.js:** The project uses Chart.js for the pie chart.  It's included via CDN in `index.html`.
-* **Region IDs:** Ensure the `data-region-id` attributes in the HTML map elements match the region IDs in `regions.json`.
-* **Customization:** Modify `css/styles.css` to adjust the visual appearance.
+            ```json
+            [
+                {
+                    "province": "Ilocos Sur",
+                    "description": "...",
+                    "languages": ["Ilocano", "Tagalog"],
+                    "image": "ilocos_sur.jpg"
+                },
+                {
+                    "province": "La Union",
+                    "description": "...",
+                    "languages": ["Ilocano", "Tagalog", "English"],
+                    "image": "la_union.jpg"
+                },
+                // ... more provinces
+            ]
+            ```
 
-## To Do
+        * Ensure that the `province` names in the JSON *exactly* match the `title` attributes in the SVG.
+        * Place the province image files (e.g., `ilocos_sur.jpg`) in the `images/` directory.
+3.  **Open `index.html`:**
+    * Simply open the `index.html` file in a web browser. The map and province information should be displayed.
 
-* Replace the image map with an interactive SVG map (e.g., using D3.js or Leaflet.js).
-* Gather and input accurate data for all Luzon regions in `data/regions.json`.
-* Provide real images for each region.
-* Implement search functionality (if required).
-* Add error handling and validation.
-* Optimize for different screen sizes (responsive design).
+##  Key Functionality
+
+* **Map Display:** The `js/scripts.js` file fetches the SVG map and injects it into the `#map-container` element.
+* **Province Highlighting:** CSS styles are used to highlight provinces on hover and click.
+* **Province Details:**
+    * Clicking a province retrieves data from `provinces.json` and displays the province's name, description, image, and languages spoken.
+    * A pie chart (created with Chart.js) visualizes the language data.
+* **Hover Tooltips:** Province names are displayed in tooltips when the user hovers the mouse over a province.
+
+##  Customization
+
+* **Map Styles:** Modify the CSS in `css/styles.css` to change the appearance of the map, details panel, tooltips, etc.
+* **Province Data:** Update the information in `data/provinces.json` to reflect accurate province details.  Add more provinces as needed.  Ensure corresponding images are in the `images/` folder.
+* **Chart Appearance:** Customize the Chart.js pie chart in the `js/scripts.js` file by adjusting the chart options.  Refer to the Chart.js documentation: [https://www.chartjs.org/docs/latest/](https://www.chartjs.org/docs/latest/)
+* **SVG Map:** You can replace the `philippines.svg` file with a different SVG map, but you will likely need to adjust the JavaScript and CSS to work with the new map's structure.
+
+##  Potential Improvements
+
+* **Search Functionality:** Implement a search bar to allow users to quickly find specific provinces.
+* **Zoom and Pan:** Add zoom and pan capabilities to the map using D3.js or a mapping library.
+* **Data Filtering:** Allow users to filter provinces based on language or other criteria.
+* **Responsive Design:** Enhance the CSS to make the application fully responsive to different screen sizes.
+
+##  Author
+
+[Your Name or Organization]
+
+##  License
+
+[License Type, if applicable]
