@@ -78,6 +78,12 @@
         "image": "cavite.jpg"
     },
     {
+        "province": "City of Puerto Princesa",
+        "description": "The capital of Palawan and a highly urbanized city, Puerto Princesa blends urban comforts with natural wonders.",
+        "languages": ["Tagalog", "Cuyonen", "Bisaya"],
+        "image": "peurto_princesa.jpg"
+    }
+    {
         "province": "Ifugao",
         "description": "Ifugao is famous for the UNESCO-listed Banaue Rice Terraces.",
         "languages": ["Ifugao", "Ilocano", "Tagalog"],
