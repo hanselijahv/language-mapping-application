@@ -55,9 +55,6 @@ h1 {
     transform-origin: top left;
 }
 
-h2 {
-    text-align: center;
-}
 
 #map-container svg {
     user-select: none;
