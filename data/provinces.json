@@ -113,6 +113,18 @@
         "languages": ["Tagalog"],
         "image": "laguna.jpg"
     },
+     {
+        "province": "Marinduque",
+        "description": "Marinduque is a Tagalog-speaking province, similar to neighboring Mindoro and Quezon.",
+        "languages": ["Tagalog"],
+        "image": "marinduque.jpg"
+    },
+     {
+        "province": "Mindoro",
+        "description": "Mindoro is an island formed by two adjoining provinces of Oriental Mindoro and Occidental Mindoro. The area of Mindoro is ranked as the seventh largest in the Philippines.",
+        "languages": ["Tagalog", "Mangyan", "Bisaya", "Ilocano"],
+        "image": "mindoro.jpg"
+    },
     {
         "province": "Mountain Province",
         "description": "Mountain Province is where the hanging coffins of Sagada can be found.",
@@ -130,6 +142,12 @@
         "description": "Nueva Vizcaya is a multicultural province with scenic mountain ranges and rich agriculture.",
         "languages": ["Ilocano", "Ifugao", "Gaddang", "Tagalog"],
         "image": "nueva_vizcaya.jpg"
+    },
+      {
+        "province": "Palawan",
+        "description": "Palawan is a slice of heaven, a sliver of an island that teems with exotic wildlife, quaint fishing villages, and UNESCO World Heritage Sites.",
+        "languages": ["Tagalog", "Cuyonon", "Hiligaynon", "Kinaray-a", "Palawano"],
+        "image": "palawan.jpg"
     },
     {
         "province": "Pampanga",
@@ -162,6 +180,12 @@
         "image": "rizal.jpg"
     },
     {
+        "province": "Romblon",
+        "description": "Romblon province straddle the Sibuyan Sea and form the link between the Tagalog-speaking Region IV and Visayan-speaking Region V.",
+        "languages": ["Romblomanon", "Onhan", "Asi",  "Tagalog"],
+        "image": "romblon.jpg"
+    },
+    {
         "province": "Sorsogon",
         "description": "Sorsogon is the southernmost province in Bicol, known for whale shark watching in Donsol.",
         "languages": ["Bicolano", "Tagalog"],
@@ -192,39 +216,9 @@
         "image": "catanduanes.jpg"
     },
     {
-        "province": "Marinduque",
-        "description": "Marinduque is famous for the Moriones Festival and heart-shaped island geography.",
-        "languages": ["Tagalog"],
-        "image": "marinduque.jpg"
-    },
-    {
         "province": "Masbate",
         "description": "Masbate is known for its rodeos and cowboy culture.",
         "languages": ["Masbateño", "Bicolano", "Tagalog"],
         "image": "masbate.jpg"
     },
-    {
-        "province": "Occidental Mindoro",
-        "description": "Occidental Mindoro has beaches, mountains, and is home to the Mangyan indigenous group.",
-        "languages": ["Tagalog", "Mangyan"],
-        "image": "occidental_mindoro.jpg"
-    },
-    {
-        "province": "Oriental Mindoro",
-        "description": "Oriental Mindoro is known for Puerto Galera’s beaches and diving spots.",
-        "languages": ["Tagalog", "Mangyan"],
-        "image": "oriental_mindoro.jpg"
-    },
-    {
-        "province": "Palawan",
-        "description": "Palawan is a top tourist destination, home to El Nido, Coron, and the Underground River.",
-        "languages": ["Cuyonon", "Tagalog", "Palawano"],
-        "image": "palawan.jpg"
-    },
-    {
-        "province": "Romblon",
-        "description": "Romblon is famous for its marble industry and pristine beaches.",
-        "languages": ["Romblomanon", "Tagalog"],
-        "image": "romblon.jpg"
-    }
 ]
