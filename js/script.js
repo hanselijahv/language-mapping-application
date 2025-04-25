@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         languageChartInstance: null,
         allProvinces: [],
         svg: null,
-        currentTranslate: { x: 0, y: 0 },
+        currentTranslate: {x: 0, y: 0},
         currentScale: 1
     };
 
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setupEventListeners();
     }
 
-    // Load and setup the SVG map
+    // Load and set up the SVG map
     function loadSVGMap() {
         fetch('assets/images/svg/philippines.svg')
             .then(response => response.text())
-            .then(svgData => {
+            .then(async svgData => {
                 elements.mapContainer.innerHTML = svgData;
                 state.svg = elements.mapContainer.querySelector('svg');
                 state.svg.setAttribute('id', 'interactive-map');
@@ -50,7 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 setupMapInteractions();
-                initializeSearch();
+                await initializeSearch().catch(error => {
+                    console.error('Search initialization failed:', error);
+                });
             })
             .catch(error => {
                 console.error('Error loading SVG:', error);
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup map interactions (panning, zooming)
     function setupMapInteractions() {
         let isPanning = false;
-        let startPoint = { x: 0, y: 0 };
+        let startPoint = {x: 0, y: 0};
 
         state.svg.style.cursor = 'grab';
         state.svg.setAttribute('transform', `translate(0, 0) scale(1)`);
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mouse down event for panning
         state.svg.addEventListener('mousedown', (e) => {
             isPanning = true;
-            startPoint = { x: e.clientX, y: e.clientY };
+            startPoint = {x: e.clientX, y: e.clientY};
             state.svg.style.cursor = 'grabbing';
             e.preventDefault(); // Prevent text selection during drag
         });
@@ -116,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Mouse up event to end panning
-        document.addEventListener('mouseup', (e) => {
+        document.addEventListener('mouseup', () => {
             if (isPanning) {
                 // Update our state after dragging completes
                 const transform = state.svg.getAttribute('transform');
@@ -226,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 current.classList.remove('highlighted');
                 const next = current.nextElementSibling || items[0];
                 next.classList.add('highlighted');
-                next.scrollIntoView({ block: 'nearest' });
+                next.scrollIntoView({block: 'nearest'});
             }
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
@@ -236,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 current.classList.remove('highlighted');
                 const prev = current.previousElementSibling || items[items.length - 1];
                 prev.classList.add('highlighted');
-                prev.scrollIntoView({ block: 'nearest' });
+                prev.scrollIntoView({block: 'nearest'});
             }
         } else if (e.key === 'Enter' && current) {
             e.preventDefault();
@@ -297,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (region) {
             highlightRegion(region);
             centerViewOnRegion(region);
-            loadAndDisplayProvinceData(provinceName);
+            void loadAndDisplayProvinceData(provinceName);
         }
     }
 
@@ -310,17 +312,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Center view on the selected region
     function centerViewOnRegion(region) {
         const bbox = region.getBBox();
-        const centerX = bbox.x + bbox.width/2;
-        const centerY = bbox.y + bbox.height/2;
+        const centerX = bbox.x + bbox.width / 2;
+        const centerY = bbox.y + bbox.height / 2;
 
         const containerRect = elements.mapContainer.getBoundingClientRect();
 
         const viewportRatio = Math.min(containerRect.width, containerRect.height);
         const regionSize = Math.max(bbox.width, bbox.height);
-        const targetScale = Math.min(3, Math.max(0.65, viewportRatio/(regionSize * 1.5)));
+        const targetScale = Math.min(3, Math.max(0.65, viewportRatio / (regionSize * 1.5)));
 
-        const targetX = containerRect.width/2 - centerX * targetScale;
-        const targetY = containerRect.height/2 - centerY * targetScale;
+        const targetX = containerRect.width / 2 - centerX * targetScale;
+        const targetY = containerRect.height / 2 - centerY * targetScale;
         const bounded = getBoundedTranslation(targetX, targetY, targetScale);
 
         // Smooth zoom animation (preserved)
@@ -345,8 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 20);
     }
 
+
+    /**
+     * @typedef {Object} ProvinceData
+     * @property {string} province
+     * @property {string} description
+     * @property {string} [image] - Optional image filename
+     * @property {Object.<string, number>} [language_percentages] - Optional language percentages
+     */
     // Load and display province data
     async function loadAndDisplayProvinceData(provinceName) {
+
         try {
             const provinceData = await fetchProvinceData(provinceName);
 
@@ -369,6 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error loading province data:', error);
         }
     }
+
     // Render language list
     function renderLanguageList(languages) {
         elements.languageList.innerHTML = '';
@@ -439,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        onClick: () => {}
+                        onClick: null
                     },
                     title: {
                         display: false
@@ -450,7 +462,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Handle zoom functionality
-    // Updated handleZoom function (minimum zoom now 0.65)
     function handleZoom(e) {
         e.preventDefault();
 
@@ -475,23 +486,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     // Apply transform to SVG
     function applyTransform(x, y, scale) {
         state.svg.setAttribute('transform', `translate(${x}, ${y}) scale(${scale})`);
         state.currentTranslate.x = x;
         state.currentTranslate.y = y;
         state.currentScale = scale;
-    }
-
-    // Update current transform from SVG attribute
-    function updateCurrentTransform() {
-        const transform = state.svg.getAttribute('transform');
-        const match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-        if (match) {
-            state.currentTranslate.x = parseFloat(match[1]);
-            state.currentTranslate.y = parseFloat(match[2]);
-        }
     }
 
     // Get bounded translation to keep map within container
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const centerY = (containerRect.height - scaledHeight) / 2;
 
         // Apply transform
-        state.currentTranslate = { x: centerX, y: centerY };
+        state.currentTranslate = {x: centerX, y: centerY};
         state.currentScale = initialScale;
         state.svg.setAttribute('transform', `translate(${centerX}, ${centerY}) scale(${initialScale})`);
     }
