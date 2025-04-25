@@ -15,8 +15,9 @@
         <h1>Language Map of Luzon</h1>
         <input type="text" id="search-input" placeholder="Search regions...">
         <div id="content-area">
-            <div id="map-container">
-                <svg id="luzon-map" width="500" height="500"></svg>
+            <div id="map-wrapper">  <div id="map-container">
+                    <svg id="luzon-map" width="500" height="500"></svg>
+                </div>
             </div>
 
             <div id="region-details" class="hidden">
@@ -27,7 +28,8 @@
 
                 <div id="region-info" class="tab-content">
                     <h2 id="region-name"></h2>
-                    <img id="region-image" src="" alt="">
+                    <div id="region-image-container">  <img id="region-image" src="" alt="">
+                    </div>
                     <p id="region-description"></p>
                 </div>
 
