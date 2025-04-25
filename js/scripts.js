@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load and setup the SVG map
     function loadSVGMap() {
-        fetch('images/philippines.svg')
+        fetch('assets/images/svg/philippines.svg')
             .then(response => response.text())
             .then(svgData => {
                 elements.mapContainer.innerHTML = svgData;
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             elements.regionDetails.classList.remove('hidden');
             elements.regionName.textContent = provinceData.province;
-            elements.regionImage.src = `/images/${provinceData.image}`;
+            elements.regionImage.src = `assets/images/jpg/${provinceData.image}`;
             elements.regionDescription.textContent = provinceData.description;
 
             renderLanguageList(provinceData.language_percentages || {});
