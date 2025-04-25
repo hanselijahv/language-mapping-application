@@ -1,0 +1,73 @@
+[
+    {
+      "id": "region1",
+      "name": "Ilocos Region",
+      "image": "images/ilocos_region.jpg",
+      "description": "The Ilocos Region, designated as Region I, is an administrative region in the Philippines...",
+      "languages": {
+        "Ilocano": 66,
+        "Tagalog": 20,
+        "English": 5,
+        "Other": 9
+      }
+    },
+    {
+      "id": "region2",
+      "name": "Cagayan Valley",
+      "image": "images/cagayan_valley.jpg",
+      "description": "Cagayan Valley, designated as Region II, is an administrative region in the Philippines...",
+      "languages": {
+        "Ilocano": 50,
+        "Tagalog": 25,
+        "Ibanag": 15,
+        "Other": 10
+      }
+    },
+    {
+      "id": "region3",
+      "name": "Central Luzon",
+      "image": "images/central_luzon.jpg",
+      "description": "Central Luzon, designated as Region III, is an administrative region in the Philippines...",
+      "languages": {
+        "Tagalog": 70,
+        "Kapampangan": 15,
+        "Ilocano": 5,
+        "Other": 10
+      }
+    },
+    {
+      "id": "region4a",
+      "name": "CALABARZON",
+      "image": "images/calabarzon.jpg",
+      "description": "CALABARZON, designated as Region IV-A, is an administrative region in the Philippines...",
+      "languages": {
+        "Tagalog": 80,
+        "English": 10,
+        "Other": 10
+      }
+    },
+    {
+      "id": "region4b",
+      "name": "MIMAROPA",
+      "image": "images/mimaropa.jpg",
+      "description": "MIMAROPA, designated as Region IV-B, is an administrative region in the Philippines...",
+      "languages": {
+        "Tagalog": 60,
+        "Hiligaynon": 15,
+        "Cebuano": 10,
+        "Other": 15
+      }
+    },
+    {
+      "id": "region5",
+      "name": "Bicol Region",
+      "image": "images/bicol_region.jpg",
+      "description": "Bicol Region, designated as Region V, is an administrative region in the Philippines...",
+      "languages": {
+        "Bikol": 75,
+        "Tagalog": 15,
+        "Other": 10
+      }
+    }
+
+  ]
