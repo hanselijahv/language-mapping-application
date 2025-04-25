@@ -18,23 +18,16 @@
     <div id="map-details-container">
         <div id="map-container">
         </div>
-        <div id="region-details" class="hidden">
-            <div class="tab-buttons">
-                <button class="tab-button active" data-tab="region-info">Region Info</button>
-                <button class="tab-button" data-tab="language">Language</button>
+        <div id="region-details" class="region-card">
+            <h2>Region Details</h2>
+            <h3 id="region-name"></h3>
+            <div id="region-image-container">
+                <img id="region-image" src="" alt="">
             </div>
-            <div id="region-info" class="tab-content">
-                <h2 id="region-name"></h2>
-                <div id="region-image-container">
-                    <img id="region-image" src="" alt="">
-                </div>
-                <p id="region-description"></p>
-            </div>
-            <div id="language" class="tab-content hidden">
-                <h3>Languages Spoken</h3>
-                <canvas id="language-chart"></canvas>
-                <ul id="language-list"></ul>
-            </div>
+            <p id="region-description"></p>
+            <h4 id="languages-heading" class="languages hidden">Languages Spoken</h4>
+            <canvas id="language-chart"></canvas>
+            <ul id="language-list"></ul>
         </div>
     </div>
 </div>

@@ -24,7 +24,7 @@ body {
 }
 
 h1 {
-    text-align: left;
+    text-align: center;
     margin: 0 0 10px 0;
     color: #555;
 }
@@ -41,7 +41,7 @@ h1 {
     display: flex;
     flex: 1;
     width: 100%;
-    background-color: #C6ECFF;
+    background-color: white;
     overflow: hidden;
 }
 
@@ -51,7 +51,12 @@ h1 {
     border: 1px solid #ffffff;
     height: 100%;
     position: relative;
+    background-color: #C6ECFF;
     transform-origin: top left;
+}
+
+h2 {
+    text-align: center;
 }
 
 #map-container svg {
@@ -206,4 +211,13 @@ ul#language-list li {
 
 .search-result-item.highlighted {
     background-color: #e0e0e0;
+}
+
+#region-details.region-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hidden {
+    display: none;
 }
