@@ -112,6 +112,27 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+#region-details {
+    flex: 1;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    overflow-y: auto; /* <-- this already exists (good) */
+    overflow-x: hidden; /* <-- ADD this to prevent side scroll */
+    box-sizing: border-box;
+}
+
+#map-details-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    height: 600px; /* <-- ADD this */
+}
 
 #region-image {
     width: 100%;
@@ -217,6 +238,7 @@ h1 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     height: auto;
     align-self: flex-start;
+ 
 }
 
 .container {
@@ -225,5 +247,16 @@ h1 {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    height: auto;
+}
+
+.info-logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-logo {
+    width: 150px;
+    max-width: 100%;
     height: auto;
 }

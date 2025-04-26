@@ -10,55 +10,53 @@
 </head>
 <body>
 
-<!-- WRAPPER for side-by-side layout -->
-<div class="page-layout">
-
-  <!-- OUTSIDE PANEL (info / instructions) -->
-  <div id="info-panel">
-    <div id="popup-body">
-      <h2 id="popup-region-name">Welcome to Our Interactive Philippines Language Map for Luzon</h2>
-      <p>Our web app shows the language mapping of Luzon, visually representing the distribution of languages spoken across the largest island in the Philippines. It uses interactive maps to display linguistic data, allowing users to explore which languages are spoken in specific provinces, often highlighting dominant languages and linguistic diversity. This includes languages like Tagalog, Ilocano, Bikol, Kapampangan, Pangasinan, and others, reflecting the island's rich linguistic landscape.</p>
-      
-      <h3>How to Use:</h3>
-      <ol>
-        <li><strong>Access the Web App:</strong> Navigate to Luzon. Zoom in or use the search bar to find specific provinces like "Metropolitan Manila" or "Benguet".</li>
-        <li><strong>Explore Language Data:</strong> Click on a province to view its description and dominant languages. A pie chart will display language percentages.</li>
-        <li><strong>Analyze Linguistic Diversity:</strong> Compare diversity across provinces (e.g., multilingual Ifugao vs. monolingual Bulacan).</li>
-        <li><strong>Interact with Search Feature:</strong> Use the search bar or scroll the preset province list.</li>
-      </ol>
-
-      <ul id="popup-language-list"></ul>
-      <canvas id="popup-language-chart"></canvas>
-    </div>
-  </div>
-
-  <!-- MAIN APPLICATION -->
-  <div class="container">
-    <h1>Language Map of Luzon</h1>
-    
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="Search for a region...">
-      <div id="search-results"></div>
-    </div>
-
-    <div id="map-details-container">
-      <div id="map-container"></div>
-
-      <div id="region-details" class="region-card hidden">
-        <h2>Region Details</h2>
-        <h3 id="region-name"></h3>
-        <div id="region-image-container">
-          <img id="region-image" src="" alt="">
+  <div class="page-layout">
+    <div class="container">
+      <div class="Map">
+        <h1>Language Map of Luzon</h1>
+  
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Search for a region...">
+          <div id="search-results"></div>
         </div>
-        <p id="region-description"></p>
-        <h4 id="languages-heading" class="languages hidden">Languages Spoken</h4>
-        <canvas id="language-chart"></canvas>
-        <ul id="language-list"></ul>
+  
+        <div id="map-details-container">
+          <div id="map-container"></div>
+  
+          <div id="region-details" class="region-card hidden">
+            <h2>Region Details</h2>
+            <h3 id="region-name"></h3>
+            <div id="region-image-container">
+              <img id="region-image" src="" alt="">
+            </div>
+            <p id="region-description"></p>
+            <h4 id="languages-heading" class="languages hidden">Languages Spoken</h4>
+            <canvas id="language-chart"></canvas>
+            <ul id="language-list"></ul>
+          </div>
+        </div>
       </div>
     </div>
+  
+    <div id="info-panel">
+      <div class="info-logo-container">
+        <img src="assets/images/png/Luzon_logo.png" alt="Luzon Logo" class="info-logo">
+      </div>
+    
+      <h2>How to Use the Interactive Philippines Language Map for Luzon</h2>
+      
+      <p><strong>Navigate to Luzon:</strong> Once the map loads, zoom into Luzon, which is the northernmost major island group of the Philippines. You can do this by scrolling or using the search bar to focus on specific provinces like <em>"Metropolitan Manila"</em> or <em>"Benguet"</em>.</p>
+      
+      <p><strong>Explore Language Data:</strong> Click on a province to view details about the description and languages spoken there. For example, clicking on Albay in the Bicol Region will show the description of Albay, and after scrolling, you'll see that <strong>Bicolano (Central Bikol)</strong> is the dominant language, with Tagalog also widely spoken. A pie chart will display the percentages beside the map.</p>
+      
+      <p><strong>Analyze Linguistic Diversity:</strong> Use the map’s features to compare linguistic diversity across provinces. For instance, Ifugao in the Cordillera Region is highly multilingual, with over half the households speaking <strong>Tuwali</strong> or <strong>Ayangan</strong>, while provinces near Metro Manila, like Bulacan, are more monolingual, with <strong>Tagalog</strong> as the primary language.</p>
+      
+      <p><strong>Interact with Search Feature:</strong> If you are not familiar with the location of the provinces, you can use the search bar to type the province you want to locate, or scroll through the preset provinces arranged alphabetically.</p>
+    </div>
+    
+    
   </div>
-
-</div> <!-- end of page-layout -->
+  
 
 <script src="js/script.js"></script>
 </body>
