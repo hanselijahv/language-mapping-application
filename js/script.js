@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Optional: Update the language chart here if you want
 
-    // Show popup
     if (popupOverlay) {
         popupOverlay.classList.remove('hidden');
     }
