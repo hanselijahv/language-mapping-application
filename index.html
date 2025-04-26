@@ -9,6 +9,27 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+   
+    <div id="popup-overlay" class="hidden">
+        <div id="popup-content">
+          <span id="popup-close">&times;</span>
+          <div id="popup-body">
+            <h2 id="popup-region-name">Welcome to Our Interactive Philippines Language Map for Luzon </h2>
+            <p>Our web app that shows the language mapping of the whole Luzon, visually representing the distribution of languages spoken across Luzon, the largest island in the Philippines. It uses interactive maps to display linguistic data, allowing users to explore which languages are spoken in specific provinces, often highlighting dominant languages and linguistic diversity. For Luzon, this would include mapping languages like Tagalog, Ilocano, Bikol, Kapampangan, Pangasinan, and others, reflecting the island's rich linguistic landscape.</p>
+            
+            <h3>How to Use:</h3>
+            <ol>
+              <li><strong>Access the Web App:</strong> Navigate to Luzon: Once the map loads, zoom into Luzon, which is the northernmost major island group of the Philippines. You can do this by scrolling or using the search bar to focus on specific provinces like "Metropolitan Manila" or "Benguet".</li>
+              <li><strong>Explore Language Data:</strong> Click on a province to view details about the description and languages spoken there. For example, clicking on Albay in the Bicol Region will show the description of Albay, and a few scrolls down that Bicolano (Central Bikol) is the dominant language, with Tagalog also widely spoken. Beside the map, a pie chart shows the percentages for each language.</li>
+              <li><strong>Analyze Linguistic Diversity:</strong> Use the map’s features to compare linguistic diversity across provinces. For instance, Ifugao in the Cordillera region is highly multilingual, with over half the households speaking Tuwali or Ayangan, while provinces near Metro Manila, like Bulacan, are more monolingual, with Tagalog as the primary language.</li>
+              <li><strong>Interact with Search Feature:</strong> If you are not familiar with the location of the provinces, you can use the search bar and type the province you want to locate or you can scroll down the preset provinces that are arranged alphabetically.</li>
+            </ol>
+                  <ul id="popup-language-list"></ul>
+            <canvas id="popup-language-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      
 <div class="container">
     <h1>Language Map of Luzon</h1>
     <div id="search-container">

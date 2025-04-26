@@ -34,7 +34,46 @@ document.addEventListener('DOMContentLoaded', () => {
         loadSVGMap();
         setupEventListeners();
     }
+   // Open the popup
+   function openRegionPopup(regionData) {
+    // Set content
+    const popupImage = document.getElementById('popup-image');
+    const popupRegionName = document.getElementById('popup-region-name');
+    const languageList = document.getElementById('popup-language-list');
+    const popupOverlay = document.getElementById('popup-overlay');
 
+    if (popupImage) {
+        popupImage.src = regionData.image || '';
+    }
+    if (popupRegionName) {
+        popupRegionName.textContent = regionData.name || 'Unknown Region';
+    }
+
+    // Populate languages
+    if (languageList) {
+        languageList.innerHTML = '';
+        regionData.languages.forEach(language => {
+            const li = document.createElement('li');
+            li.textContent = language;
+            languageList.appendChild(li);
+        });
+    }
+
+    const popupClose = document.getElementById('popup-close');
+
+    if (popupClose && popupOverlay) {
+        popupClose.addEventListener('click', () => {
+            popupOverlay.classList.add('hidden');
+        });
+    }
+
+    // Optional: Update the language chart here if you want
+
+    // Show popup
+    if (popupOverlay) {
+        popupOverlay.classList.remove('hidden');
+    }
+}
     // Load and set up the SVG map
     function loadSVGMap() {
         fetch('assets/images/svg/philippines.svg')
@@ -460,6 +499,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+ 
+
+// Example usage:
+// Imagine you click a region — you pass data like this:
+document.querySelectorAll('.map-region').forEach(region => {
+    region.addEventListener('click', () => {
+        openRegionPopup({
+            name: 'Ilocos Region',
+            image: 'images/ilocos.jpg',
+            languages: ['Ilocano', 'Tagalog', 'English']
+        });
+    });
+});
+
 
     // Handle zoom functionality
     function handleZoom(e) {
